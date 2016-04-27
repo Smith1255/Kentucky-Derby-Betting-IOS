@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F11CD12C260083A865 /* AppDelegate.swift */; };
+		42FDF6F41CD12C260083A865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F31CD12C260083A865 /* ViewController.swift */; };
+		42FDF6F71CD12C260083A865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6F51CD12C260083A865 /* Main.storyboard */; };
+		42FDF6F91CD12C260083A865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6F81CD12C260083A865 /* Assets.xcassets */; };
+		42FDF6FC1CD12C260083A865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */; };
+		42FDF7071CD12C260083A865 /* Kentucky_DerbyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF7061CD12C260083A865 /* Kentucky_DerbyTests.swift */; };
+		42FDF7121CD12C260083A865 /* Kentucky_DerbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF7111CD12C260083A865 /* Kentucky_DerbyUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42FDF7031CD12C260083A865 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42FDF6E61CD12C260083A865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42FDF6ED1CD12C260083A865;
+			remoteInfo = "Kentucky Derby";
+		};
+		42FDF70E1CD12C260083A865 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42FDF6E61CD12C260083A865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42FDF6ED1CD12C260083A865;
+			remoteInfo = "Kentucky Derby";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		42FDF6EE1CD12C260083A865 /* Kentucky Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kentucky Derby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42FDF6F11CD12C260083A865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42FDF6F31CD12C260083A865 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42FDF6F61CD12C260083A865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		42FDF6F81CD12C260083A865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42FDF6FB1CD12C260083A865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		42FDF6FD1CD12C260083A865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42FDF7021CD12C260083A865 /* Kentucky DerbyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kentucky DerbyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42FDF7061CD12C260083A865 /* Kentucky_DerbyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kentucky_DerbyTests.swift; sourceTree = "<group>"; };
+		42FDF7081CD12C260083A865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42FDF70D1CD12C260083A865 /* Kentucky DerbyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kentucky DerbyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42FDF7111CD12C260083A865 /* Kentucky_DerbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kentucky_DerbyUITests.swift; sourceTree = "<group>"; };
+		42FDF7131CD12C260083A865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42FDF6EB1CD12C260083A865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42FDF6FF1CD12C260083A865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42FDF70A1CD12C260083A865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42FDF6E51CD12C260083A865 = {
+			isa = PBXGroup;
+			children = (
+				42FDF6F01CD12C260083A865 /* Kentucky Derby */,
+				42FDF7051CD12C260083A865 /* Kentucky DerbyTests */,
+				42FDF7101CD12C260083A865 /* Kentucky DerbyUITests */,
+				42FDF6EF1CD12C260083A865 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		42FDF6EF1CD12C260083A865 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42FDF6EE1CD12C260083A865 /* Kentucky Derby.app */,
+				42FDF7021CD12C260083A865 /* Kentucky DerbyTests.xctest */,
+				42FDF70D1CD12C260083A865 /* Kentucky DerbyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42FDF6F01CD12C260083A865 /* Kentucky Derby */ = {
+			isa = PBXGroup;
+			children = (
+				42FDF6F11CD12C260083A865 /* AppDelegate.swift */,
+				42FDF6F31CD12C260083A865 /* ViewController.swift */,
+				42FDF6F51CD12C260083A865 /* Main.storyboard */,
+				42FDF6F81CD12C260083A865 /* Assets.xcassets */,
+				42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */,
+				42FDF6FD1CD12C260083A865 /* Info.plist */,
+			);
+			path = "Kentucky Derby";
+			sourceTree = "<group>";
+		};
+		42FDF7051CD12C260083A865 /* Kentucky DerbyTests */ = {
+			isa = PBXGroup;
+			children = (
+				42FDF7061CD12C260083A865 /* Kentucky_DerbyTests.swift */,
+				42FDF7081CD12C260083A865 /* Info.plist */,
+			);
+			path = "Kentucky DerbyTests";
+			sourceTree = "<group>";
+		};
+		42FDF7101CD12C260083A865 /* Kentucky DerbyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				42FDF7111CD12C260083A865 /* Kentucky_DerbyUITests.swift */,
+				42FDF7131CD12C260083A865 /* Info.plist */,
+			);
+			path = "Kentucky DerbyUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42FDF6ED1CD12C260083A865 /* Kentucky Derby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42FDF7161CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky Derby" */;
+			buildPhases = (
+				42FDF6EA1CD12C260083A865 /* Sources */,
+				42FDF6EB1CD12C260083A865 /* Frameworks */,
+				42FDF6EC1CD12C260083A865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kentucky Derby";
+			productName = "Kentucky Derby";
+			productReference = 42FDF6EE1CD12C260083A865 /* Kentucky Derby.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42FDF7011CD12C260083A865 /* Kentucky DerbyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42FDF7191CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky DerbyTests" */;
+			buildPhases = (
+				42FDF6FE1CD12C260083A865 /* Sources */,
+				42FDF6FF1CD12C260083A865 /* Frameworks */,
+				42FDF7001CD12C260083A865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42FDF7041CD12C260083A865 /* PBXTargetDependency */,
+			);
+			name = "Kentucky DerbyTests";
+			productName = "Kentucky DerbyTests";
+			productReference = 42FDF7021CD12C260083A865 /* Kentucky DerbyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		42FDF70C1CD12C260083A865 /* Kentucky DerbyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42FDF71C1CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky DerbyUITests" */;
+			buildPhases = (
+				42FDF7091CD12C260083A865 /* Sources */,
+				42FDF70A1CD12C260083A865 /* Frameworks */,
+				42FDF70B1CD12C260083A865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42FDF70F1CD12C260083A865 /* PBXTargetDependency */,
+			);
+			name = "Kentucky DerbyUITests";
+			productName = "Kentucky DerbyUITests";
+			productReference = 42FDF70D1CD12C260083A865 /* Kentucky DerbyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42FDF6E61CD12C260083A865 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = KM187;
+				TargetAttributes = {
+					42FDF6ED1CD12C260083A865 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 3SYYTY4G6Z;
+					};
+					42FDF7011CD12C260083A865 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 3SYYTY4G6Z;
+						TestTargetID = 42FDF6ED1CD12C260083A865;
+					};
+					42FDF70C1CD12C260083A865 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 3SYYTY4G6Z;
+						TestTargetID = 42FDF6ED1CD12C260083A865;
+					};
+				};
+			};
+			buildConfigurationList = 42FDF6E91CD12C260083A865 /* Build configuration list for PBXProject "Kentucky Derby" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42FDF6E51CD12C260083A865;
+			productRefGroup = 42FDF6EF1CD12C260083A865 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42FDF6ED1CD12C260083A865 /* Kentucky Derby */,
+				42FDF7011CD12C260083A865 /* Kentucky DerbyTests */,
+				42FDF70C1CD12C260083A865 /* Kentucky DerbyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42FDF6EC1CD12C260083A865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42FDF6FC1CD12C260083A865 /* LaunchScreen.storyboard in Resources */,
+				42FDF6F91CD12C260083A865 /* Assets.xcassets in Resources */,
+				42FDF6F71CD12C260083A865 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42FDF7001CD12C260083A865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42FDF70B1CD12C260083A865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42FDF6EA1CD12C260083A865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42FDF6F41CD12C260083A865 /* ViewController.swift in Sources */,
+				42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42FDF6FE1CD12C260083A865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42FDF7071CD12C260083A865 /* Kentucky_DerbyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42FDF7091CD12C260083A865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42FDF7121CD12C260083A865 /* Kentucky_DerbyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42FDF7041CD12C260083A865 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42FDF6ED1CD12C260083A865 /* Kentucky Derby */;
+			targetProxy = 42FDF7031CD12C260083A865 /* PBXContainerItemProxy */;
+		};
+		42FDF70F1CD12C260083A865 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42FDF6ED1CD12C260083A865 /* Kentucky Derby */;
+			targetProxy = 42FDF70E1CD12C260083A865 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42FDF6F51CD12C260083A865 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42FDF6F61CD12C260083A865 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42FDF6FB1CD12C260083A865 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		42FDF7141CD12C260083A865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		42FDF7151CD12C260083A865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		42FDF7171CD12C260083A865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Kentucky Derby/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Killa.Kentucky-Derby";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		42FDF7181CD12C260083A865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Kentucky Derby/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Killa.Kentucky-Derby";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		42FDF71A1CD12C260083A865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Kentucky DerbyTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Killa.Kentucky-DerbyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kentucky Derby.app/Kentucky Derby";
+			};
+			name = Debug;
+		};
+		42FDF71B1CD12C260083A865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Kentucky DerbyTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Killa.Kentucky-DerbyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kentucky Derby.app/Kentucky Derby";
+			};
+			name = Release;
+		};
+		42FDF71D1CD12C260083A865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Kentucky DerbyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Killa.Kentucky-DerbyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Kentucky Derby";
+			};
+			name = Debug;
+		};
+		42FDF71E1CD12C260083A865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Kentucky DerbyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Killa.Kentucky-DerbyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Kentucky Derby";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42FDF6E91CD12C260083A865 /* Build configuration list for PBXProject "Kentucky Derby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42FDF7141CD12C260083A865 /* Debug */,
+				42FDF7151CD12C260083A865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42FDF7161CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky Derby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42FDF7171CD12C260083A865 /* Debug */,
+				42FDF7181CD12C260083A865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		42FDF7191CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky DerbyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42FDF71A1CD12C260083A865 /* Debug */,
+				42FDF71B1CD12C260083A865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		42FDF71C1CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky DerbyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42FDF71D1CD12C260083A865 /* Debug */,
+				42FDF71E1CD12C260083A865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 42FDF6E61CD12C260083A865 /* Project object */;
+}
