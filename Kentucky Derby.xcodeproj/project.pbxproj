@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420A6F2C1CD54846007C376C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F2B1CD54846007C376C /* CustomTableViewCell.swift */; };
+		42382EA11CD2DC0000ED1740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42382E9F1CD2DC0000ED1740 /* Main.storyboard */; };
 		42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F11CD12C260083A865 /* AppDelegate.swift */; };
 		42FDF6F41CD12C260083A865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F31CD12C260083A865 /* ViewController.swift */; };
-		42FDF6F71CD12C260083A865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6F51CD12C260083A865 /* Main.storyboard */; };
 		42FDF6F91CD12C260083A865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6F81CD12C260083A865 /* Assets.xcassets */; };
 		42FDF6FC1CD12C260083A865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */; };
 		42FDF7071CD12C260083A865 /* Kentucky_DerbyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF7061CD12C260083A865 /* Kentucky_DerbyTests.swift */; };
 		42FDF7121CD12C260083A865 /* Kentucky_DerbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF7111CD12C260083A865 /* Kentucky_DerbyUITests.swift */; };
+		42FDF7201CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF71F1CD1346B0083A865 /* Quattrocento-Regular.otf */; };
+		42FDF7211CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF71F1CD1346B0083A865 /* Quattrocento-Regular.otf */; };
+		42FDF7221CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF71F1CD1346B0083A865 /* Quattrocento-Regular.otf */; };
+		42FDF7241CD189150083A865 /* Agreloy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF7231CD189150083A865 /* Agreloy.ttf */; };
+		42FDF7261CD191570083A865 /* supportingClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF7251CD191570083A865 /* supportingClasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		420A6F2B1CD54846007C376C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		42382EA01CD2DC0000ED1740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42FDF6EE1CD12C260083A865 /* Kentucky Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kentucky Derby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FDF6F11CD12C260083A865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42FDF6F31CD12C260083A865 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		42FDF6F61CD12C260083A865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42FDF6F81CD12C260083A865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42FDF6FB1CD12C260083A865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42FDF6FD1CD12C260083A865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +54,9 @@
 		42FDF70D1CD12C260083A865 /* Kentucky DerbyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kentucky DerbyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FDF7111CD12C260083A865 /* Kentucky_DerbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kentucky_DerbyUITests.swift; sourceTree = "<group>"; };
 		42FDF7131CD12C260083A865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42FDF71F1CD1346B0083A865 /* Quattrocento-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quattrocento-Regular.otf"; sourceTree = "<group>"; };
+		42FDF7231CD189150083A865 /* Agreloy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Agreloy.ttf; sourceTree = "<group>"; };
+		42FDF7251CD191570083A865 /* supportingClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = supportingClasses.swift; path = ../supportingClasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +107,14 @@
 		42FDF6F01CD12C260083A865 /* Kentucky Derby */ = {
 			isa = PBXGroup;
 			children = (
+				420A6F2B1CD54846007C376C /* CustomTableViewCell.swift */,
+				42FDF7251CD191570083A865 /* supportingClasses.swift */,
+				42FDF71F1CD1346B0083A865 /* Quattrocento-Regular.otf */,
+				42FDF7231CD189150083A865 /* Agreloy.ttf */,
 				42FDF6F11CD12C260083A865 /* AppDelegate.swift */,
 				42FDF6F31CD12C260083A865 /* ViewController.swift */,
-				42FDF6F51CD12C260083A865 /* Main.storyboard */,
 				42FDF6F81CD12C260083A865 /* Assets.xcassets */,
+				42382E9F1CD2DC0000ED1740 /* Main.storyboard */,
 				42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */,
 				42FDF6FD1CD12C260083A865 /* Info.plist */,
 			);
@@ -233,8 +247,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42FDF6FC1CD12C260083A865 /* LaunchScreen.storyboard in Resources */,
+				42382EA11CD2DC0000ED1740 /* Main.storyboard in Resources */,
 				42FDF6F91CD12C260083A865 /* Assets.xcassets in Resources */,
-				42FDF6F71CD12C260083A865 /* Main.storyboard in Resources */,
+				42FDF7201CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */,
+				42FDF7241CD189150083A865 /* Agreloy.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FDF7211CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FDF7221CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				42FDF6F41CD12C260083A865 /* ViewController.swift in Sources */,
+				42FDF7261CD191570083A865 /* supportingClasses.swift in Sources */,
+				420A6F2C1CD54846007C376C /* CustomTableViewCell.swift in Sources */,
 				42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,10 +316,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		42FDF6F51CD12C260083A865 /* Main.storyboard */ = {
+		42382E9F1CD2DC0000ED1740 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				42FDF6F61CD12C260083A865 /* Base */,
+				42382EA01CD2DC0000ED1740 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -487,6 +507,7 @@
 				42FDF7181CD12C260083A865 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42FDF7191CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky DerbyTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +516,7 @@
 				42FDF71B1CD12C260083A865 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42FDF71C1CD12C260083A865 /* Build configuration list for PBXNativeTarget "Kentucky DerbyUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +525,7 @@
 				42FDF71E1CD12C260083A865 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
