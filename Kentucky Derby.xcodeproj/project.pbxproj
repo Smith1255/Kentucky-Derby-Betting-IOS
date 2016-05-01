@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		420A6F2C1CD54846007C376C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F2B1CD54846007C376C /* CustomTableViewCell.swift */; };
+		420A6F2E1CD5777D007C376C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F2D1CD5777D007C376C /* FirstViewController.swift */; };
+		420A6F301CD57967007C376C /* BetNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F2F1CD57967007C376C /* BetNumberViewController.swift */; };
+		420A6F321CD57B51007C376C /* BetPlacementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F311CD57B51007C376C /* BetPlacementViewController.swift */; };
+		420A6F341CD57CD8007C376C /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F331CD57CD8007C376C /* ThankYouViewController.swift */; };
+		420A6F381CD58C86007C376C /* ApplicationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F371CD58C86007C376C /* ApplicationManagerViewController.swift */; };
 		42382EA11CD2DC0000ED1740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42382E9F1CD2DC0000ED1740 /* Main.storyboard */; };
 		42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F11CD12C260083A865 /* AppDelegate.swift */; };
 		42FDF6F41CD12C260083A865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F31CD12C260083A865 /* ViewController.swift */; };
@@ -41,6 +46,11 @@
 
 /* Begin PBXFileReference section */
 		420A6F2B1CD54846007C376C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		420A6F2D1CD5777D007C376C /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		420A6F2F1CD57967007C376C /* BetNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetNumberViewController.swift; sourceTree = "<group>"; };
+		420A6F311CD57B51007C376C /* BetPlacementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetPlacementViewController.swift; sourceTree = "<group>"; };
+		420A6F331CD57CD8007C376C /* ThankYouViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
+		420A6F371CD58C86007C376C /* ApplicationManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManagerViewController.swift; sourceTree = "<group>"; };
 		42382EA01CD2DC0000ED1740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42FDF6EE1CD12C260083A865 /* Kentucky Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kentucky Derby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FDF6F11CD12C260083A865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +124,12 @@
 				42FDF6F11CD12C260083A865 /* AppDelegate.swift */,
 				42FDF6F31CD12C260083A865 /* ViewController.swift */,
 				42FDF6F81CD12C260083A865 /* Assets.xcassets */,
+				420A6F2D1CD5777D007C376C /* FirstViewController.swift */,
 				42382E9F1CD2DC0000ED1740 /* Main.storyboard */,
+				420A6F311CD57B51007C376C /* BetPlacementViewController.swift */,
+				420A6F331CD57CD8007C376C /* ThankYouViewController.swift */,
+				420A6F371CD58C86007C376C /* ApplicationManagerViewController.swift */,
+				420A6F2F1CD57967007C376C /* BetNumberViewController.swift */,
 				42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */,
 				42FDF6FD1CD12C260083A865 /* Info.plist */,
 			);
@@ -277,8 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				420A6F2E1CD5777D007C376C /* FirstViewController.swift in Sources */,
+				420A6F341CD57CD8007C376C /* ThankYouViewController.swift in Sources */,
 				42FDF6F41CD12C260083A865 /* ViewController.swift in Sources */,
 				42FDF7261CD191570083A865 /* supportingClasses.swift in Sources */,
+				420A6F381CD58C86007C376C /* ApplicationManagerViewController.swift in Sources */,
+				420A6F301CD57967007C376C /* BetNumberViewController.swift in Sources */,
+				420A6F321CD57B51007C376C /* BetPlacementViewController.swift in Sources */,
 				420A6F2C1CD54846007C376C /* CustomTableViewCell.swift in Sources */,
 				42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */,
 			);

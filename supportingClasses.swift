@@ -23,6 +23,16 @@ class horse: NSObject, NSCoding {
         self.jerseyNum = jerseyNum
         self.odds = odds
     }
+    convenience init (horseName: String, jerseyNum: String, odds: String, straightWager: [String: String]) {
+        self.init(
+            horseName: horseName,
+            jerseyNum: jerseyNum,
+            odds: odds
+        )
+        self.straightWager["Win"] = straightWager["Win"]
+        self.straightWager["Place"] = straightWager["Place"]
+        self.straightWager["Show"] = straightWager["Show"]
+    }
     
     required convenience init?(coder decoder: NSCoder) {
         guard let horseName = decoder.decodeObjectForKey("horseName") as? String,
@@ -34,7 +44,8 @@ class horse: NSObject, NSCoding {
         self.init(
             horseName: horseName,
             jerseyNum: jerseyNum,
-            odds: odds
+            odds: odds,
+            straightWager: straightWager
             )
     }
     
@@ -57,14 +68,6 @@ class horse: NSObject, NSCoding {
         }
         else {return true}
     }
-    
-    func addBetter(name: String, position: String) {
-        straightWager[position] = name
-    }
-    func changeBetter(newName: String, wager: String) {
-        straightWager[wager] = newName
-    }
-    
     func changeOdds(newOdds: String) {
         odds = newOdds
     }
@@ -78,10 +81,6 @@ class horse: NSObject, NSCoding {
         straightWager[wager] = newName
     }
     func getNameForWager (wagerType: String) -> String {
-        if (straightWager[wagerType]! != "EMPTY") {
-            return straightWager[wagerType]!
-        }else {
-            return "NONE"
-        }
+        return straightWager[wagerType]!
     }
 }
