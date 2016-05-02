@@ -9,11 +9,6 @@
 import UIKit
 
 class BetPlacementViewController: UIViewController {
-    var horseFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horseList").path!
-    }
     var userNameFilePath : String {
         let manager = NSFileManager.defaultManager()
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
@@ -24,10 +19,21 @@ class BetPlacementViewController: UIViewController {
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
         return url.URLByAppendingPathComponent("horsesNeeded").path!
     }
+    var allHorseListsFilePath : String {
+        let manager = NSFileManager.defaultManager()
+        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
+        return url.URLByAppendingPathComponent("allHorseLists").path!
+    }
     var userName: String!
-    var horseList: [horse]!
+    var horseListNewest: [horse]!
+    var horseListBackOne: [horse]!
     var horsesNeeded: Int!
     var temporaryHorseIndexList: [Int] = []
+    var allHorseLists: [[horse]]!
+    
+    var horsesNeededFirstList: Int!
+    var horsesNeededSecondList: Int = 0
+    var randomHorse: horse!
 
     //OUTLETS IN SCENE 3: WIN PLACE SHOW
     @IBOutlet weak var showHorseBtn: UIButton!
@@ -50,27 +56,35 @@ class BetPlacementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if let archivedHorseList = NSKeyedUnarchiver.unarchiveObjectWithFile(horseFilePath) as? [horse] {
-            horseList = archivedHorseList
-        }
         if let archivedUserName = NSKeyedUnarchiver.unarchiveObjectWithFile(userNameFilePath) as? String {
             userName = archivedUserName
         }
         if let archivedHorsesNeeded = NSKeyedUnarchiver.unarchiveObjectWithFile(neededHorseFilePath) as? Int {
             horsesNeeded = archivedHorsesNeeded
         }
+        if let archivedAllHorseLists = NSKeyedUnarchiver.unarchiveObjectWithFile(allHorseListsFilePath) as? [[horse]] {
+            allHorseLists = archivedAllHorseLists
+        }
+        horseListNewest = allHorseLists[(allHorseLists.count)-1]
+        if allHorseLists.count > 1 {
+            horseListBackOne = allHorseLists[(allHorseLists.count)-2]
+        }
     }
     
     
     //@IBACTION AND FUNC OF SCENE 3: WIN PLACE SHOW
-    func addUserBet (wagerType: String) {
-        (horseList[getNextHorseIndex()!]).changeBetterName(userName, wager: wagerType)
-        temporaryHorseIndexList.removeAtIndex(temporaryHorseIndexList.count-1)
-    }
-    func generateRandomHorseIndex() -> Int!{
-        if (horseList.count > 0) {
-            let randIndex = Int(arc4random_uniform(UInt32(horseList.count)))
-            if !(horseList[randIndex].isBooked()) {
+    func generateRandomHorseIndex(listNum: Int) -> Int!{
+        var currentList: [horse]!
+        if listNum == 1 {
+            currentList = horseListBackOne
+        }else if listNum == 2{
+            currentList = horseListNewest
+        }else {
+            return nil
+        }
+        if (currentList.count > 0) {
+            let randIndex = Int(arc4random_uniform(UInt32(currentList.count)))
+            if !(currentList[randIndex].isBooked()) {
                 return randIndex
             }else {
                 return nil
@@ -79,17 +93,10 @@ class BetPlacementViewController: UIViewController {
             return nil
         }
     }
-    func getNextHorseIndex () -> Int? {
-        if temporaryHorseIndexList.count > 0 {
-            return temporaryHorseIndexList[temporaryHorseIndexList.count-1]
-        }else {
-            return nil
-        }
-    }
-    func newHorseLabels () {
-        horsesLeftNumLbl.text = "\(temporaryHorseIndexList.count)"
-        horseLbl.text = (horseList[getNextHorseIndex()!]).getName()
-        horseOddsLbl.text = (horseList[getNextHorseIndex()!]).getOdds()
+    func archiveHorseList() {
+        allHorseLists[(allHorseLists.count)-1] = horseListNewest
+        allHorseLists[(allHorseLists.count)-2] = horseListBackOne
+        NSKeyedArchiver.archiveRootObject(allHorseLists, toFile: allHorseListsFilePath)
     }
     func endScene() {
         payBtn.hidden = false
@@ -100,15 +107,15 @@ class BetPlacementViewController: UIViewController {
         winLbl.hidden = true
         placeLbl.hidden = true
         showLbl.hidden = true
-
-        horsesLeftNumLbl.text = "\(temporaryHorseIndexList.count)"
         
-        NSKeyedArchiver.archiveRootObject(horseList, toFile: horseFilePath)        
+        archiveHorseList()
     }
     @IBAction func onShowHorsePressed(sender: AnyObject) {
-        while horsesNeeded > 0 {
-            temporaryHorseIndexList.append(generateRandomHorseIndex())
-            horsesNeeded = horsesNeeded - 1
+        if (horse.totalAvailableSpots(horseListNewest)) >= horsesNeeded {
+            horsesNeededFirstList = horsesNeeded
+        }else {
+            horsesNeededFirstList = horse.totalAvailableSpots(horseListNewest)
+            horsesNeededSecondList = (horsesNeeded - horsesNeededFirstList)
         }
         showHorseBtn.hidden = true
         horseHolderView.hidden = false
@@ -123,34 +130,56 @@ class BetPlacementViewController: UIViewController {
         horsesLeftNumLbl.hidden = false
         horsesLeftStrinLbl.hidden = false
 
-        horsesLeftNumLbl.text = "\(temporaryHorseIndexList.count)"
-        horseLbl.text = (horseList[getNextHorseIndex()!]).getName()
-        horseOddsLbl.text = (horseList[getNextHorseIndex()!]).getOdds()
+        horsesLeftNumLbl.text = "\(horsesNeeded)"
+        randomHorse = pickRandomHorse(listNeeded())
+        
+    }
+    func pickRandomHorse (listNum: Int) -> horse! {
+        var randomHorseReturned: horse!
+        let randIndex = generateRandomHorseIndex(listNum)
+        if listNum == 1 {
+            randomHorseReturned = horseListBackOne[randIndex]
+            horsesNeededFirstList = horsesNeededFirstList - 1
+        } else if listNum == 2 {
+            randomHorseReturned = horseListNewest[randIndex]
+            horsesNeededSecondList = horsesNeededSecondList - 1
+
+        }else {
+            return nil
+        }
+        horsesLeftNumLbl.text = String(horsesNeededFirstList + horsesNeededSecondList)
+        horseLbl.text = (randomHorseReturned).getName()
+        horseOddsLbl.text = (randomHorseReturned).getOdds()
+        
+        return randomHorseReturned
+    }
+    func listNeeded () -> Int! {
+        if horsesNeededFirstList > 0 {
+            return 1
+        } else if horsesNeededSecondList > 0 {
+            return 2
+        } else {
+            return nil
+        }
+    }
+    func changeUserBet(randHorse: horse, wagerType: String) {
+        (randHorse).changeBetterName(userName, wager: wagerType)
+    }
+    func handleBetButton (wagerType: String) {
+        changeUserBet(randomHorse, wagerType: wagerType)
+        if horsesNeededFirstList == 0 && horsesNeededSecondList == 0 {
+            endScene()
+        }else {
+            randomHorse = pickRandomHorse(listNeeded())
+        }
     }
     @IBAction func onWinPressed(sender: AnyObject) {
-        addUserBet("Win")
-        if temporaryHorseIndexList.count == 0 {
-            endScene()
-        } else {
-            newHorseLabels()
-        }
+        handleBetButton("Win")
     }
     @IBAction func onPlacePressed(sender: AnyObject) {
-        addUserBet("Place")
-        if temporaryHorseIndexList.count == 0 {
-            endScene()
-        }else {
-            newHorseLabels()
-        }
-        
+        handleBetButton("Place")
     }
     @IBAction func onShowPressed(sender: AnyObject) {
-        addUserBet("Show")
-        if temporaryHorseIndexList.count == 0 {
-            endScene()
-        }else {
-            newHorseLabels()
-        }
-        
+        handleBetButton("Show")
     }
 }

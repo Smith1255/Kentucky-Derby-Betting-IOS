@@ -26,6 +26,7 @@ class ThankYouViewController: UIViewController{
     //return to home
     @IBOutlet weak var roseBtn: UIButton!
     @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var numHorsesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +36,8 @@ class ThankYouViewController: UIViewController{
             horsesNeeded = archivedHorsesNeeded
         }
         priceLbl.text = "$\(determinePrice(horsesNeeded))"
+        numHorsesLabel.text = "For the \(horsesNeeded) horses, you owe:"
     }
-    @IBOutlet weak var horseWinLabel: UILabel!
     
     //FUNC & ACTION OF SCENE 4: THANK YOU/PAY
     func determinePrice (numberOfHorses: Int) -> Int {

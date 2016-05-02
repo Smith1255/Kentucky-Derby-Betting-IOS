@@ -14,10 +14,10 @@ class FirstViewController: UIViewController {
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
         return url.URLByAppendingPathComponent("userName").path!
     }
-    var horseFilePath : String {
+    var allHorseListsFilePath : String {
         let manager = NSFileManager.defaultManager()
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horseList").path!
+        return url.URLByAppendingPathComponent("allHorseLists").path!
     }
     var neededHorseFilePath : String {
         let manager = NSFileManager.defaultManager()
@@ -36,8 +36,6 @@ class FirstViewController: UIViewController {
     //OUTLETS IN SCENE 1: WELCOME SCREEN
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var continueBtn: UIButton!
-    @IBOutlet weak var labelLbl: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +48,10 @@ class FirstViewController: UIViewController {
             let tempUserName: String = "None"
             let newHorse = horse(horseName: "Delete", jerseyNum: "", odds: "")
             let horseList: [horse] = [newHorse]
+            let allHorseLists: [[horse]] = [horseList]
             let horsesNeeded = 1
             NSKeyedArchiver.archiveRootObject(tempUserName, toFile: userNameFilePath)
-            NSKeyedArchiver.archiveRootObject(horseList, toFile: horseFilePath)
+            NSKeyedArchiver.archiveRootObject(allHorseLists, toFile: allHorseListsFilePath)
             NSKeyedArchiver.archiveRootObject(horsesNeeded, toFile: neededHorseFilePath)
             NSKeyedArchiver.archiveRootObject(isFirstTime, toFile: firstTimeFilePath)
         }

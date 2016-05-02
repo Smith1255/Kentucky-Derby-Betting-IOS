@@ -10,13 +10,14 @@ import UIKit
 
 class ApplicationManagerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var horseFilePath : String {
+    var allHorseListsFilePath : String {
         let manager = NSFileManager.defaultManager()
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horseList").path!
+        return url.URLByAppendingPathComponent("allHorseLists").path!
     }
     
     var horseList: [horse]!
+    var allHorseLists: [[horse]]!
     var newHorse = horse(horseName: "", jerseyNum: "", odds: "")
     
     let cellReuseIdentifier = "protoCell"
@@ -24,19 +25,69 @@ class ApplicationManagerViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if let archivedHorseList = NSKeyedUnarchiver.unarchiveObjectWithFile(horseFilePath) as? [horse] {
-            horseList = archivedHorseList
+        if let archivedAllHorseList = NSKeyedUnarchiver.unarchiveObjectWithFile(allHorseListsFilePath) as? [[horse]] {
+            allHorseLists = archivedAllHorseList
         }
+        horseList = allHorseLists[allHorseLists.count-1]
+        setNumSegments()
+        
     }
     
     //APPLICATION MANAGER
+    func setNumSegments() {
+        let numOfSegments = (allHorseLists.count)
+        switch numOfSegments {
+        case 1:
+            horseListChooserSgm.setEnabled(false, forSegmentAtIndex: 1)
+            horseListChooserSgm.removeSegmentAtIndex(2, animated: true)
+            horseListChooserSgm.removeSegmentAtIndex(3, animated: true)
+        case 2:
+            horseListChooserSgm.setEnabled(true, forSegmentAtIndex: 1)
+        case 3:
+            horseListChooserSgm.setEnabled(true, forSegmentAtIndex: 1)
+            horseListChooserSgm.insertSegmentWithTitle("Third", atIndex: 3, animated: false)
+        case 4:
+            horseListChooserSgm.setEnabled(true, forSegmentAtIndex: 1)
+            horseListChooserSgm.insertSegmentWithTitle("Fourth", atIndex: 4, animated: false)
+        default: break
+        }
+    }
+    func archiveHorseList () {
+        allHorseLists[allHorseLists.count-1] = horseList
+        NSKeyedArchiver.archiveRootObject(allHorseLists, toFile: allHorseListsFilePath)
+    }
     @IBOutlet weak var horseNameTxt: UITextField!
     @IBOutlet weak var horseJerseyTxt: UITextField!
     @IBOutlet weak var horseOddsTxt: UITextField!
+    
+    @IBOutlet weak var horseListChooserSgm: UISegmentedControl!
+    
+    @IBAction func onListChosen(sender: AnyObject) {
+        let chosenList = horseListChooserSgm.selectedSegmentIndex
+        if chosenList < allHorseLists.count {
+            horseList = allHorseLists[chosenList]
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+        
+    }
+    @IBAction func onDeleteListPressed(sender: AnyObject) {
+        let selectedList = horseListChooserSgm.selectedSegmentIndex
+        horseList = allHorseLists[0]
+        horseListChooserSgm.selectedSegmentIndex = 0
+        allHorseLists.removeAtIndex(selectedList)
+        horseList = allHorseLists[0]
+        setNumSegments()
+        archiveHorseList()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
     @IBAction func onAddHorse(sender: AnyObject) {
         newHorse = horse(horseName: horseNameTxt.text!, jerseyNum: horseJerseyTxt.text!, odds: horseOddsTxt.text!)
         horseList.append(newHorse)
-        NSKeyedArchiver.archiveRootObject(horseList, toFile: horseFilePath)
+        archiveHorseList()
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
@@ -71,7 +122,7 @@ class ApplicationManagerViewController: UIViewController, UITableViewDelegate, U
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             tableView.beginUpdates()
             horseList.removeAtIndex(indexPath.row)
-            NSKeyedArchiver.archiveRootObject(horseList, toFile: horseFilePath)
+            archiveHorseList()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             tableView.endUpdates()
         }

@@ -1,3 +1,4 @@
+//: Playground - noun: a place where people can play
 //
 //  File.swift
 //  Kentucky Derby
@@ -9,7 +10,6 @@
 import Foundation
 
 class horse: NSObject, NSCoding {
-    private static var numSpotsAvail: Int = 0
     private var horseName: String = "NAME"
     private var jerseyNum: String = ""
     private var odds: String = "1/2"
@@ -46,7 +46,7 @@ class horse: NSObject, NSCoding {
             jerseyNum: jerseyNum,
             odds: odds,
             straightWager: straightWager
-            )
+        )
     }
     
     func encodeWithCoder(coder: NSCoder) {
@@ -55,7 +55,24 @@ class horse: NSObject, NSCoding {
         coder.encodeObject(self.odds, forKey: "odds")
         coder.encodeObject(self.straightWager, forKey: "straightWager")
     }
-    
+    func changeOdds(newOdds: String) {
+        odds = newOdds
+    }
+    func getName () -> String {
+        return horseName
+    }
+    func getOdds () -> String {
+        return odds
+    }
+    func getJersey () -> String {
+        return jerseyNum
+    }
+    func changeBetterName(newName: String, wager: String) {
+        straightWager[wager] = newName
+    }
+    func getNameForWager (wagerType: String) -> String {
+        return straightWager[wagerType]!
+    }
     func isBooked() -> Bool {
         if (straightWager["Win"] == "EMPTY") {
             return false
@@ -68,19 +85,33 @@ class horse: NSObject, NSCoding {
         }
         else {return true}
     }
-    func changeOdds(newOdds: String) {
-        odds = newOdds
+    func isAvailable(wagerType: String) -> Bool {
+        return (straightWager[wagerType] == "EMPTY")
     }
-    func getName () -> String {
-        return horseName
+    func availableSpots(wagerType: String) -> Int! {
+        if self.isAvailable(wagerType) {
+            return 1
+        }
+        else {
+            return 0
+        }
     }
-    func getOdds () -> String {
-        return odds
+    static func totalAvailableSpots(horseList: [horse]) -> Int! {
+        var numSpots = 0
+        for i in 0...horseList.count-1 {
+            numSpots += horseList[i].availableSpots("Win")
+            numSpots += horseList[i].availableSpots("Place")
+            numSpots += horseList[i].availableSpots("Show")
+        }
+        
+        return numSpots
     }
-    func changeBetterName(newName: String, wager: String) {
-        straightWager[wager] = newName
+    
+    func clearBetterNames() {
+        straightWager["Win"] = "EMPTY"
+        straightWager["Place"] = "EMPTY"
+        straightWager["Show"] = "EMPTY"
     }
-    func getNameForWager (wagerType: String) -> String {
-        return straightWager[wagerType]!
-    }
+    
+    
 }
