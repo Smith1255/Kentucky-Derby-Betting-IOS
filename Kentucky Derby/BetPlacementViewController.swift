@@ -25,8 +25,8 @@ class BetPlacementViewController: UIViewController {
         return url.URLByAppendingPathComponent("allHorseLists").path!
     }
     var userName: String!
-    var horseListNewest: [horse]!
-    var horseListBackOne: [horse]!
+    var primaryHorseList: [horse]!
+    var secondaryHorseList: [horse]!
     var horsesNeeded: Int!
     var temporaryHorseIndexList: [Int] = []
     var allHorseLists: [[horse]]!
@@ -34,7 +34,7 @@ class BetPlacementViewController: UIViewController {
     var horsesNeededFirstList: Int!
     var horsesNeededSecondList: Int = 0
     var randomHorse: horse!
-
+    
     //OUTLETS IN SCENE 3: WIN PLACE SHOW
     @IBOutlet weak var showHorseBtn: UIButton!
     @IBOutlet weak var winBtn: UIButton!
@@ -65,37 +65,50 @@ class BetPlacementViewController: UIViewController {
         if let archivedAllHorseLists = NSKeyedUnarchiver.unarchiveObjectWithFile(allHorseListsFilePath) as? [[horse]] {
             allHorseLists = archivedAllHorseLists
         }
-        horseListNewest = allHorseLists[(allHorseLists.count)-1]
-        if allHorseLists.count > 1 {
-            horseListBackOne = allHorseLists[(allHorseLists.count)-2]
-        }
     }
     
-    
     //@IBACTION AND FUNC OF SCENE 3: WIN PLACE SHOW
+    func copyAndEmpty(listToCopy: [horse]) -> [horse]{
+        var newHorse: horse!
+        var newHorseList: [horse] = []
+        for i in 0...listToCopy.count-1 {
+            newHorse = horse(horseName: listToCopy[i].getName(), jerseyNum: listToCopy[i].getJersey(), odds: listToCopy[i].getOdds())
+            newHorseList.append(newHorse)
+        }
+        return newHorseList
+    }
+    func createNewHorseList() {
+        allHorseLists.append(copyAndEmpty(allHorseLists[0]))
+    }
     func generateRandomHorseIndex(listNum: Int) -> Int!{
         var currentList: [horse]!
         if listNum == 1 {
-            currentList = horseListBackOne
+            currentList = primaryHorseList
         }else if listNum == 2{
-            currentList = horseListNewest
+            currentList = secondaryHorseList
         }else {
             return nil
         }
         if (currentList.count > 0) {
-            let randIndex = Int(arc4random_uniform(UInt32(currentList.count)))
-            if !(currentList[randIndex].isBooked()) {
-                return randIndex
-            }else {
-                return nil
+            var randIndex: Int!
+            while randIndex == nil {
+                randIndex = Int(arc4random_uniform(UInt32(currentList.count)))
+                if (currentList[randIndex].isBooked()) {
+                    randIndex = nil
+                }
             }
+            return randIndex
         }else {
             return nil
         }
     }
     func archiveHorseList() {
-        allHorseLists[(allHorseLists.count)-1] = horseListNewest
-        allHorseLists[(allHorseLists.count)-2] = horseListBackOne
+        if secondaryHorseList == nil {
+            allHorseLists[(allHorseLists.count)-1] = primaryHorseList
+        }else {
+            allHorseLists[(allHorseLists.count)-1] = secondaryHorseList
+            allHorseLists[(allHorseLists.count)-2] = primaryHorseList
+        }
         NSKeyedArchiver.archiveRootObject(allHorseLists, toFile: allHorseListsFilePath)
     }
     func endScene() {
@@ -111,11 +124,16 @@ class BetPlacementViewController: UIViewController {
         archiveHorseList()
     }
     @IBAction func onShowHorsePressed(sender: AnyObject) {
-        if (horse.totalAvailableSpots(horseListNewest)) >= horsesNeeded {
-            horsesNeededFirstList = horsesNeeded
-        }else {
-            horsesNeededFirstList = horse.totalAvailableSpots(horseListNewest)
+        if horsesNeeded > horse.totalAvailableSpots(allHorseLists[(allHorseLists.count) - 1]) {
+            createNewHorseList()
+            primaryHorseList = allHorseLists[(allHorseLists.count)-2]
+            secondaryHorseList = allHorseLists[(allHorseLists.count)-1]
+            
+            horsesNeededFirstList = horse.totalAvailableSpots(primaryHorseList)
             horsesNeededSecondList = (horsesNeeded - horsesNeededFirstList)
+        }else if horsesNeeded <= horse.totalAvailableSpots(allHorseLists[(allHorseLists.count) - 1]) {
+            horsesNeededFirstList = horsesNeeded
+            primaryHorseList = allHorseLists[(allHorseLists.count)-1]
         }
         showHorseBtn.hidden = true
         horseHolderView.hidden = false
@@ -129,25 +147,42 @@ class BetPlacementViewController: UIViewController {
         horseOddsLbl.hidden = false
         horsesLeftNumLbl.hidden = false
         horsesLeftStrinLbl.hidden = false
-
-        horsesLeftNumLbl.text = "\(horsesNeeded)"
-        randomHorse = pickRandomHorse(listNeeded())
         
+        horsesLeftNumLbl.text = String(horsesNeeded)
+        randomHorse = pickRandomHorse(listNeeded())
+        hideUnavailableChoices()
+        
+    }
+    func hideUnavailableChoices() {
+        if !((randomHorse).isAvailable("Win")) {
+            winBtn.enabled = false
+        }else {
+            winBtn.enabled = true
+        }
+        if !((randomHorse).isAvailable("Place")) {
+            placeBtn.enabled = false
+        }else {
+            placeBtn.enabled = true
+        }
+        if !((randomHorse).isAvailable("Show")) {
+            showBtn.enabled = false
+        }else {
+            showBtn.enabled = true
+        }
     }
     func pickRandomHorse (listNum: Int) -> horse! {
         var randomHorseReturned: horse!
         let randIndex = generateRandomHorseIndex(listNum)
         if listNum == 1 {
-            randomHorseReturned = horseListBackOne[randIndex]
+            randomHorseReturned = primaryHorseList[randIndex]
             horsesNeededFirstList = horsesNeededFirstList - 1
         } else if listNum == 2 {
-            randomHorseReturned = horseListNewest[randIndex]
+            randomHorseReturned = secondaryHorseList[randIndex]
             horsesNeededSecondList = horsesNeededSecondList - 1
-
+            
         }else {
             return nil
         }
-        horsesLeftNumLbl.text = String(horsesNeededFirstList + horsesNeededSecondList)
         horseLbl.text = (randomHorseReturned).getName()
         horseOddsLbl.text = (randomHorseReturned).getOdds()
         
@@ -166,6 +201,7 @@ class BetPlacementViewController: UIViewController {
         (randHorse).changeBetterName(userName, wager: wagerType)
     }
     func handleBetButton (wagerType: String) {
+        horsesLeftNumLbl.text = String(horsesNeededFirstList + horsesNeededSecondList)
         changeUserBet(randomHorse, wagerType: wagerType)
         if horsesNeededFirstList == 0 && horsesNeededSecondList == 0 {
             endScene()
@@ -175,11 +211,15 @@ class BetPlacementViewController: UIViewController {
     }
     @IBAction func onWinPressed(sender: AnyObject) {
         handleBetButton("Win")
+        hideUnavailableChoices()
     }
     @IBAction func onPlacePressed(sender: AnyObject) {
         handleBetButton("Place")
+        hideUnavailableChoices()
     }
     @IBAction func onShowPressed(sender: AnyObject) {
         handleBetButton("Show")
+        hideUnavailableChoices()
     }
 }
+
