@@ -13,7 +13,9 @@
 		420A6F321CD57B51007C376C /* BetPlacementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F311CD57B51007C376C /* BetPlacementViewController.swift */; };
 		420A6F341CD57CD8007C376C /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F331CD57CD8007C376C /* ThankYouViewController.swift */; };
 		420A6F381CD58C86007C376C /* ApplicationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A6F371CD58C86007C376C /* ApplicationManagerViewController.swift */; };
-		42382EA11CD2DC0000ED1740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42382E9F1CD2DC0000ED1740 /* Main.storyboard */; };
+		429DE4C61CE28F480002AAF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429DE4C51CE28F480002AAF9 /* Main.storyboard */; };
+		429DE4C71CE28F480002AAF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429DE4C51CE28F480002AAF9 /* Main.storyboard */; };
+		429DE4C81CE28F480002AAF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429DE4C51CE28F480002AAF9 /* Main.storyboard */; };
 		42F33E721CD81C6200F01A1B /* PayoutManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F33E711CD81C6200F01A1B /* PayoutManagerViewController.swift */; };
 		42FDF6F21CD12C260083A865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDF6F11CD12C260083A865 /* AppDelegate.swift */; };
 		42FDF6F91CD12C260083A865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FDF6F81CD12C260083A865 /* Assets.xcassets */; };
@@ -51,7 +53,7 @@
 		420A6F311CD57B51007C376C /* BetPlacementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetPlacementViewController.swift; sourceTree = "<group>"; };
 		420A6F331CD57CD8007C376C /* ThankYouViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
 		420A6F371CD58C86007C376C /* ApplicationManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManagerViewController.swift; sourceTree = "<group>"; };
-		42382EA01CD2DC0000ED1740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		429DE4C51CE28F480002AAF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		42F33E711CD81C6200F01A1B /* PayoutManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayoutManagerViewController.swift; sourceTree = "<group>"; };
 		42FDF6EE1CD12C260083A865 /* Kentucky Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kentucky Derby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FDF6F11CD12C260083A865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,12 +126,12 @@
 				42FDF6F11CD12C260083A865 /* AppDelegate.swift */,
 				42FDF6F81CD12C260083A865 /* Assets.xcassets */,
 				420A6F2D1CD5777D007C376C /* FirstViewController.swift */,
-				42382E9F1CD2DC0000ED1740 /* Main.storyboard */,
 				420A6F311CD57B51007C376C /* BetPlacementViewController.swift */,
 				420A6F331CD57CD8007C376C /* ThankYouViewController.swift */,
 				420A6F371CD58C86007C376C /* ApplicationManagerViewController.swift */,
 				42F33E711CD81C6200F01A1B /* PayoutManagerViewController.swift */,
 				420A6F2F1CD57967007C376C /* BetNumberViewController.swift */,
+				429DE4C51CE28F480002AAF9 /* Main.storyboard */,
 				42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */,
 				42FDF6FD1CD12C260083A865 /* Info.plist */,
 			);
@@ -262,7 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42FDF6FC1CD12C260083A865 /* LaunchScreen.storyboard in Resources */,
-				42382EA11CD2DC0000ED1740 /* Main.storyboard in Resources */,
+				429DE4C61CE28F480002AAF9 /* Main.storyboard in Resources */,
 				42FDF6F91CD12C260083A865 /* Assets.xcassets in Resources */,
 				42FDF7201CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */,
 				42FDF7241CD189150083A865 /* Agreloy.ttf in Resources */,
@@ -274,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42FDF7211CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */,
+				429DE4C71CE28F480002AAF9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42FDF7221CD1346B0083A865 /* Quattrocento-Regular.otf in Resources */,
+				429DE4C81CE28F480002AAF9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,14 +340,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		42382E9F1CD2DC0000ED1740 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				42382EA01CD2DC0000ED1740 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		42FDF6FA1CD12C260083A865 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
