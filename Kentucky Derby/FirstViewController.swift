@@ -29,6 +29,11 @@ class FirstViewController: UIViewController {
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
         return url.URLByAppendingPathComponent("firstTime").path!
     }
+    var cashPotFilePath : String {
+        let manager = NSFileManager.defaultManager()
+        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
+        return url.URLByAppendingPathComponent("cashPot").path!
+    }
     
     var userName: String!
     var isFirstTime: Bool = true
@@ -50,9 +55,11 @@ class FirstViewController: UIViewController {
             let horseList: [horse] = [newHorse]
             let allHorseLists: [[horse]] = [horseList]
             let horsesNeeded = 1
+            let cashPot = 0
             NSKeyedArchiver.archiveRootObject(tempUserName, toFile: userNameFilePath)
             NSKeyedArchiver.archiveRootObject(allHorseLists, toFile: allHorseListsFilePath)
             NSKeyedArchiver.archiveRootObject(horsesNeeded, toFile: neededHorseFilePath)
+            NSKeyedArchiver.archiveRootObject(cashPot, toFile: cashPotFilePath)
             NSKeyedArchiver.archiveRootObject(isFirstTime, toFile: firstTimeFilePath)
         }
     }

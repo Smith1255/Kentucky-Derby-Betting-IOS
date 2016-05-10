@@ -11,7 +11,8 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var horseNameCellLbl: UILabel!
     @IBOutlet weak var horseOddsCellLbl: UILabel!
-
+    @IBOutlet weak var horseJerseyLbl: UILabel!
+    
     @IBOutlet weak var winCellLbl: UILabel!
     @IBOutlet weak var winCellNameLbl: UILabel!
     

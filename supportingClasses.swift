@@ -55,23 +55,26 @@ class horse: NSObject, NSCoding {
         coder.encodeObject(self.odds, forKey: "odds")
         coder.encodeObject(self.straightWager, forKey: "straightWager")
     }
-    func changeOdds(newOdds: String) {
-        odds = newOdds
-    }
     func getName () -> String {
         return horseName
     }
     func getOdds () -> String {
         return odds
     }
+    func changeOdds(newOdds: String) {
+        odds = newOdds
+    }
     func getJersey () -> String {
         return jerseyNum
     }
-    func changeBetterName(newName: String, wager: String) {
-        straightWager[wager] = newName
+    func changeJersey (jerseyNum: String) {
+        self.jerseyNum = jerseyNum
     }
     func getNameForWager (wagerType: String) -> String {
         return straightWager[wagerType]!
+    }
+    func changeBetterName(newName: String, wager: String) {
+        straightWager[wager] = newName
     }
     func isBooked() -> Bool {
         if (straightWager["Win"] == "EMPTY") {
@@ -96,6 +99,12 @@ class horse: NSObject, NSCoding {
             return 0
         }
     }
+    func clearBetterNames() {
+        straightWager["Win"] = "EMPTY"
+        straightWager["Place"] = "EMPTY"
+        straightWager["Show"] = "EMPTY"
+    }
+    
     static func totalAvailableSpots(horseList: [horse]) -> Int! {
         var numSpots = 0
         for i in 0...horseList.count-1 {
@@ -107,11 +116,6 @@ class horse: NSObject, NSCoding {
         return numSpots
     }
     
-    func clearBetterNames() {
-        straightWager["Win"] = "EMPTY"
-        straightWager["Place"] = "EMPTY"
-        straightWager["Show"] = "EMPTY"
-    }
     
     
 }
