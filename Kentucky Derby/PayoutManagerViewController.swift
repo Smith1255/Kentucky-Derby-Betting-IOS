@@ -11,15 +11,15 @@ import UIKit
 class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //FILE PATH TO THE STORED MAIN HORSE LIST
     var allHorseListsFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("allHorseLists").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("allHorseLists").path
     }
     //FILE PATH TO THE 'CASH POT' VARIABLE
     var cashPotFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("cashPot").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("cashPot").path
     }
     
     //Universally used variables
@@ -93,7 +93,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
      * Parameters: horseJerseyTxt: String!
      * Return: Bool
      */
-    func isSafe(horseJerseyTxt: String!) -> Bool{
+    func isSafe(_ horseJerseyTxt: String!) -> Bool{
         for i in 0...(allHorseLists[0].count - 1){
             if horseJerseyTxt == allHorseLists[0][i].getJersey() {
                 return true
@@ -106,17 +106,17 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         
         //INSTANTIATES THE UNIVERSAL VARIABLES
-        if let archivedAllHorseList = NSKeyedUnarchiver.unarchiveObjectWithFile(allHorseListsFilePath) as? [[horse]] {
+        if let archivedAllHorseList = NSKeyedUnarchiver.unarchiveObject(withFile: allHorseListsFilePath) as? [[horse]] {
             allHorseLists = archivedAllHorseList
         }
-        if let archivedCashPot = NSKeyedUnarchiver.unarchiveObjectWithFile(cashPotFilePath) as? Int {
+        if let archivedCashPot = NSKeyedUnarchiver.unarchiveObject(withFile: cashPotFilePath) as? Int {
             cashPot = archivedCashPot
         }
-        totalPotLbl.text = "$\(cashPot)"
+        totalPotLbl.text = "$\(cashPot!)"
         
-        winPotTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "winPot")
-        placePotTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "placePot")
-        showPotTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "showPot")
+        winPotTableView.register(UITableViewCell.self, forCellReuseIdentifier: "winPot")
+        placePotTableView.register(UITableViewCell.self, forCellReuseIdentifier: "placePot")
+        showPotTableView.register(UITableViewCell.self, forCellReuseIdentifier: "showPot")
     }
     //IBACTION
     
@@ -124,7 +124,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
      * Method name: onRegisterHorses
      * Description: checks if the given horse is safe (see method documentation), and then sets the winning horses
      */
-    @IBAction func onRegisterHorses(sender: AnyObject) {
+    @IBAction func onRegisterHorses(_ sender: AnyObject) {
         if (isSafe(firstPlaceHorse.text)) {
             firstPlaceHorseJersey = firstPlaceHorse.text
             
@@ -143,7 +143,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
      * Method name: onWinPotSlide
      * Description: directly sets the pot amount for the 'Win' pot and indirectly sets the 'Place' pot
      */
-    @IBAction func onWinPotSlide(sender: AnyObject) {
+    @IBAction func onWinPotSlide(_ sender: AnyObject) {
         var sidePot: Int!
         if winNames.count > 0 {
             winPotSld.maximumValue = Float(1)
@@ -166,7 +166,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
      * Method name: onPlacePotSlide
      * Description: directly sets the pot amount for the 'Place' pot and indirectly sets the 'Show' pot
      */
-    @IBAction func onPlacePotSlide(sender: AnyObject) {
+    @IBAction func onPlacePotSlide(_ sender: AnyObject) {
         let sidePot: Int = Int(cashPot - winPot)
         
         if sidePot != 0 {
@@ -183,7 +183,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
      * Method name: onAmountSubtracted
      * Description: subtracts the given amount from the cash pot
      */
-    @IBAction func onAmountSubtracted(sender: AnyObject) {
+    @IBAction func onAmountSubtracted(_ sender: AnyObject) {
         if winNames.count > 0 {
             cashPot = cashPot - Int(cashAmountLbl.text!)!
             NSKeyedArchiver.archiveRootObject(cashPot, toFile: cashPotFilePath)
@@ -194,7 +194,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
      * Method name: onAmountAdded
      * Description: adds the given amount from the cash pot
      */
-    @IBAction func onAmountAdded(sender: AnyObject) {
+    @IBAction func onAmountAdded(_ sender: AnyObject) {
         if winNames.count > 0 {
             cashPot = cashPot + Int(cashAmountLbl.text!)!
             NSKeyedArchiver.archiveRootObject(cashPot, toFile: cashPotFilePath)
@@ -205,13 +205,13 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
     
     //UITABLEVIEW
     func reloadTable () {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.winPotTableView.reloadData()
         })
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.placePotTableView.reloadData()
         })
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.showPotTableView.reloadData()
         })
     }
@@ -220,7 +220,7 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var showPotTableView: UITableView!
     
     // number of rows in table view
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.winPotTableView {
             return winNames.count
         }
@@ -234,22 +234,22 @@ class PayoutManagerViewController: UIViewController, UITableViewDelegate, UITabl
     }
     //create a cell for each table view row
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
         
         if tableView == self.winPotTableView {
-            cell = tableView.dequeueReusableCellWithIdentifier("winPot", forIndexPath: indexPath)
-            cell!.textLabel!.text = winNames[indexPath.row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "winPot", for: indexPath)
+            cell!.textLabel!.text = winNames[(indexPath as NSIndexPath).row]
             return cell!
         }
         if tableView == self.placePotTableView {
-            cell = tableView.dequeueReusableCellWithIdentifier("placePot", forIndexPath: indexPath)
-            cell!.textLabel!.text = placeNames[indexPath.row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "placePot", for: indexPath)
+            cell!.textLabel!.text = placeNames[(indexPath as NSIndexPath).row]
             return cell!
         }
         if tableView == self.showPotTableView {
-            cell = tableView.dequeueReusableCellWithIdentifier("showPot", forIndexPath: indexPath)
-            cell!.textLabel!.text = showNames[indexPath.row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "showPot", for: indexPath)
+            cell!.textLabel!.text = showNames[(indexPath as NSIndexPath).row]
             return cell!
         }
         

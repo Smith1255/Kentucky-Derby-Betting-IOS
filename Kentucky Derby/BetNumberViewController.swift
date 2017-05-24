@@ -11,9 +11,9 @@ import UIKit
 class BetNumberViewController: UIViewController {
     //FILE PATH TO THE STORED 'HORSES NEEDED' VARIABLE
     var neededHorseFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horsesNeeded").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("horsesNeeded").path
     }
     
     //Universally used variables
@@ -27,7 +27,7 @@ class BetNumberViewController: UIViewController {
     @IBOutlet weak var winGambBtn: UIButton!
     
     //Functions (NON IBACTION)
-    func storeHorsesNeeded (numHorses: Int) {
+    func storeHorsesNeeded (_ numHorses: Int) {
         horsesNeeded = numHorses
         NSKeyedArchiver.archiveRootObject(horsesNeeded, toFile: neededHorseFilePath)
     }
@@ -42,28 +42,28 @@ class BetNumberViewController: UIViewController {
      * Method name: onSocialGambPressed
      * Description: stores one (1) in the universal variable horsesNeeded
      */
-    @IBAction func onSocialGambPressed(sender: AnyObject) {
+    @IBAction func onSocialGambPressed(_ sender: AnyObject) {
         storeHorsesNeeded(1)
     }
     /**
      * Method name: onDealGambPressed
      * Description: stores one (3) in the universal variable horsesNeeded
      */
-    @IBAction func onDealGambPressed(sender: AnyObject) {
+    @IBAction func onDealGambPressed(_ sender: AnyObject) {
         storeHorsesNeeded(3)
     }
     /**
      * Method name: onProfGambPressed
      * Description: stores one (5) in the universal variable horsesNeeded
      */
-    @IBAction func onProfGambPressed(sender: AnyObject) {
+    @IBAction func onProfGambPressed(_ sender: AnyObject) {
         storeHorsesNeeded(5)
     }
     /**
      * Method name: onWinGambPressed
      * Description: stores one (7) in the universal variable horsesNeeded
      */
-    @IBAction func onWinGambPressed(sender: AnyObject) {
+    @IBAction func onWinGambPressed(_ sender: AnyObject) {
         storeHorsesNeeded(7)
     }
     

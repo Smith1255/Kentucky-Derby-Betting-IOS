@@ -10,10 +10,10 @@
 import Foundation
 
 class horse: NSObject, NSCoding {
-    private var horseName: String = "NAME"
-    private var jerseyNum: String = ""
-    private var odds: String = "1/2"
-    private var straightWager: [String: String] = [
+    fileprivate var horseName: String = "NAME"
+    fileprivate var jerseyNum: String = ""
+    fileprivate var odds: String = "1/2"
+    fileprivate var straightWager: [String: String] = [
         "Win": "EMPTY",
         "Place": "EMPTY",
         "Show": "EMPTY",
@@ -35,10 +35,10 @@ class horse: NSObject, NSCoding {
     }
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let horseName = decoder.decodeObjectForKey("horseName") as? String,
-            let jerseyNum = decoder.decodeObjectForKey("jerseyNum") as? String,
-            let odds = decoder.decodeObjectForKey("odds") as? String,
-            let straightWager = decoder.decodeObjectForKey("straightWager") as? [String:String]
+        guard let horseName = decoder.decodeObject(forKey: "horseName") as? String,
+            let jerseyNum = decoder.decodeObject(forKey: "jerseyNum") as? String,
+            let odds = decoder.decodeObject(forKey: "odds") as? String,
+            let straightWager = decoder.decodeObject(forKey: "straightWager") as? [String:String]
             else { return nil }
         
         self.init(
@@ -49,11 +49,11 @@ class horse: NSObject, NSCoding {
         )
     }
     
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.horseName, forKey: "horseName")
-        coder.encodeObject(self.jerseyNum, forKey: "jerseyNum")
-        coder.encodeObject(self.odds, forKey: "odds")
-        coder.encodeObject(self.straightWager, forKey: "straightWager")
+    func encode(with coder: NSCoder) {
+        coder.encode(self.horseName, forKey: "horseName")
+        coder.encode(self.jerseyNum, forKey: "jerseyNum")
+        coder.encode(self.odds, forKey: "odds")
+        coder.encode(self.straightWager, forKey: "straightWager")
     }
     func getName () -> String {
         return horseName
@@ -61,19 +61,19 @@ class horse: NSObject, NSCoding {
     func getOdds () -> String {
         return odds
     }
-    func changeOdds(newOdds: String) {
+    func changeOdds(_ newOdds: String) {
         odds = newOdds
     }
     func getJersey () -> String {
         return jerseyNum
     }
-    func changeJersey (jerseyNum: String) {
+    func changeJersey (_ jerseyNum: String) {
         self.jerseyNum = jerseyNum
     }
-    func getNameForWager (wagerType: String) -> String {
+    func getNameForWager (_ wagerType: String) -> String {
         return straightWager[wagerType]!
     }
-    func changeBetterName(newName: String, wager: String) {
+    func changeBetterName(_ newName: String, wager: String) {
         straightWager[wager] = newName
     }
     func isBooked() -> Bool {
@@ -88,10 +88,10 @@ class horse: NSObject, NSCoding {
         }
         else {return true}
     }
-    func isAvailable(wagerType: String) -> Bool {
+    func isAvailable(_ wagerType: String) -> Bool {
         return (straightWager[wagerType] == "EMPTY")
     }
-    func availableSpots(wagerType: String) -> Int! {
+    func availableSpots(_ wagerType: String) -> Int! {
         if self.isAvailable(wagerType) {
             return 1
         }
@@ -105,7 +105,7 @@ class horse: NSObject, NSCoding {
         straightWager["Show"] = "EMPTY"
     }
     
-    static func totalAvailableSpots(horseList: [horse]) -> Int! {
+    static func totalAvailableSpots(_ horseList: [horse]) -> Int! {
         var numSpots = 0
         for i in 0...horseList.count-1 {
             numSpots += horseList[i].availableSpots("Win")

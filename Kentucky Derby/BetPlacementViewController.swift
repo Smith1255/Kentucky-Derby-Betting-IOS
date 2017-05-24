@@ -11,21 +11,21 @@ import UIKit
 class BetPlacementViewController: UIViewController {
     //FILE PATH TO THE STORED USER NAME
     var userNameFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("userName").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("userName").path
     }
     //FILE PATH TO THE STORED 'HORSES NEEDED' VARIABLE
     var neededHorseFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horsesNeeded").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("horsesNeeded").path
     }
     //FILE PATH TO THE STORED MAIN HORSE LIST
     var allHorseListsFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("allHorseLists").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("allHorseLists").path
     }
     
     //Universally used variables
@@ -96,7 +96,7 @@ class BetPlacementViewController: UIViewController {
      * Parameters: Horse Array
      * Return: Horse Array
      */
-    func copyAndEmpty(listToCopy: [horse]) -> [horse]{
+    func copyAndEmpty(_ listToCopy: [horse]) -> [horse]{
         var newHorse: horse!
         var newHorseList: [horse] = []
         for i in 0...listToCopy.count-1 {
@@ -111,7 +111,7 @@ class BetPlacementViewController: UIViewController {
      * Parameters: listNum: Int
      * Return: Int
      */
-    func generateRandomHorseIndex(listNum: Int) -> Int!{
+    func generateRandomHorseIndex(_ listNum: Int) -> Int!{
         var currentList: [horse]!
         if listNum == 1 {
             currentList = primaryHorseList
@@ -139,14 +139,14 @@ class BetPlacementViewController: UIViewController {
      * Parameters: ListNum: Int
      * Return: horse
      */
-    func pickRandomHorse (listNum: Int) -> horse! {
+    func pickRandomHorse (_ listNum: Int) -> horse! {
         var randomHorseReturned: horse!
         let randIndex = generateRandomHorseIndex(listNum)
         if listNum == 1 {
-            randomHorseReturned = primaryHorseList[randIndex]
+            randomHorseReturned = primaryHorseList[randIndex!]
             horsesNeededFirstList = horsesNeededFirstList - 1
         } else if listNum == 2 {
-            randomHorseReturned = secondaryHorseList[randIndex]
+            randomHorseReturned = secondaryHorseList[randIndex!]
             horsesNeededSecondList = horsesNeededSecondList - 1
             
         }else {
@@ -165,19 +165,19 @@ class BetPlacementViewController: UIViewController {
      */
     func hideUnavailableChoices() {
         if !((randomHorse).isAvailable("Win")) {
-            winBtn.enabled = false
+            winBtn.isEnabled = false
         }else {
-            winBtn.enabled = true
+            winBtn.isEnabled = true
         }
         if !((randomHorse).isAvailable("Place")) {
-            placeBtn.enabled = false
+            placeBtn.isEnabled = false
         }else {
-            placeBtn.enabled = true
+            placeBtn.isEnabled = true
         }
         if !((randomHorse).isAvailable("Show")) {
-            showBtn.enabled = false
+            showBtn.isEnabled = false
         }else {
-            showBtn.enabled = true
+            showBtn.isEnabled = true
         }
     }
     /**
@@ -186,7 +186,7 @@ class BetPlacementViewController: UIViewController {
      * Parameters: Horse: horse, wagerType: String
      * Return: none
      */
-    func changeUserBet(Horse: horse, wagerType: String) {
+    func changeUserBet(_ Horse: horse, wagerType: String) {
         (Horse).changeBetterName(userName, wager: wagerType)
     }
     /**
@@ -195,7 +195,7 @@ class BetPlacementViewController: UIViewController {
      * Parameters: wagerType: String
      * Return: none
      */
-    func handleBetButton (wagerType: String) {
+    func handleBetButton (_ wagerType: String) {
         horsesLeftNumLbl.text = String(horsesNeededFirstList + horsesNeededSecondList)
         changeUserBet(randomHorse, wagerType: wagerType)
         if horsesNeededFirstList == 0 && horsesNeededSecondList == 0 {
@@ -226,14 +226,14 @@ class BetPlacementViewController: UIViewController {
      * Return: none
      */
     func endScene() {
-        payBtn.hidden = false
+        payBtn.isHidden = false
         
-        winBtn.hidden = true
-        placeBtn.hidden = true
-        showBtn.hidden = true
-        winLbl.hidden = true
-        placeLbl.hidden = true
-        showLbl.hidden = true
+        winBtn.isHidden = true
+        placeBtn.isHidden = true
+        showBtn.isHidden = true
+        winLbl.isHidden = true
+        placeLbl.isHidden = true
+        showLbl.isHidden = true
         
         archiveHorseList()
     }
@@ -242,13 +242,13 @@ class BetPlacementViewController: UIViewController {
         super.viewDidLoad()
         
         //INSTANTIATES THE UNIVERSAL VARIABLES
-        if let archivedUserName = NSKeyedUnarchiver.unarchiveObjectWithFile(userNameFilePath) as? String {
+        if let archivedUserName = NSKeyedUnarchiver.unarchiveObject(withFile: userNameFilePath) as? String {
             userName = archivedUserName
         }
-        if let archivedHorsesNeeded = NSKeyedUnarchiver.unarchiveObjectWithFile(neededHorseFilePath) as? Int {
+        if let archivedHorsesNeeded = NSKeyedUnarchiver.unarchiveObject(withFile: neededHorseFilePath) as? Int {
             horsesNeeded = archivedHorsesNeeded
         }
-        if let archivedAllHorseLists = NSKeyedUnarchiver.unarchiveObjectWithFile(allHorseListsFilePath) as? [[horse]] {
+        if let archivedAllHorseLists = NSKeyedUnarchiver.unarchiveObject(withFile: allHorseListsFilePath) as? [[horse]] {
             allHorseLists = archivedAllHorseLists
         }
     }
@@ -259,7 +259,7 @@ class BetPlacementViewController: UIViewController {
      * Method name: onShowHorsePressed
      * Description: When the user chooses to show horse choices
      */
-    @IBAction func onShowHorsePressed(sender: AnyObject) {
+    @IBAction func onShowHorsePressed(_ sender: AnyObject) {
         //If there are more needed horses than there are spots in the current list
         if horsesNeeded > horse.totalAvailableSpots(allHorseLists[(allHorseLists.count) - 1]) {
             createNewHorseList()
@@ -273,18 +273,18 @@ class BetPlacementViewController: UIViewController {
             horsesNeededFirstList = horsesNeeded
             primaryHorseList = allHorseLists[(allHorseLists.count)-1]
         }
-        showHorseBtn.hidden = true
-        horseHolderView.hidden = false
-        winBtn.hidden = false
-        placeBtn.hidden = false
-        showBtn.hidden = false
-        winLbl.hidden = false
-        placeLbl.hidden = false
-        showLbl.hidden = false
-        horseLbl.hidden = false
-        horseOddsLbl.hidden = false
-        horsesLeftNumLbl.hidden = false
-        horsesLeftStrinLbl.hidden = false
+        showHorseBtn.isHidden = true
+        horseHolderView.isHidden = false
+        winBtn.isHidden = false
+        placeBtn.isHidden = false
+        showBtn.isHidden = false
+        winLbl.isHidden = false
+        placeLbl.isHidden = false
+        showLbl.isHidden = false
+        horseLbl.isHidden = false
+        horseOddsLbl.isHidden = false
+        horsesLeftNumLbl.isHidden = false
+        horsesLeftStrinLbl.isHidden = false
         
         horsesLeftNumLbl.text = String(horsesNeeded)
         randomHorse = pickRandomHorse(listNeeded())
@@ -295,7 +295,7 @@ class BetPlacementViewController: UIViewController {
      * Method name: onWinPressed
      * Description: places the userName into the 'Win' bet type of the randomHorse (declared either at load or after last bet button press)
      */
-    @IBAction func onWinPressed(sender: AnyObject) {
+    @IBAction func onWinPressed(_ sender: AnyObject) {
         handleBetButton("Win")
         hideUnavailableChoices()
     }
@@ -303,7 +303,7 @@ class BetPlacementViewController: UIViewController {
      * Method name: onPlacePressed
      * Description: places the userName into the 'Place' bet type of the randomHorse
      */
-    @IBAction func onPlacePressed(sender: AnyObject) {
+    @IBAction func onPlacePressed(_ sender: AnyObject) {
         handleBetButton("Place")
         hideUnavailableChoices()
     }
@@ -311,7 +311,7 @@ class BetPlacementViewController: UIViewController {
      * Method name: onShowPressed
      * Description: places the userName into the 'Show' bet type of the randomHorse
      */
-    @IBAction func onShowPressed(sender: AnyObject) {
+    @IBAction func onShowPressed(_ sender: AnyObject) {
         handleBetButton("Show")
         hideUnavailableChoices()
     }

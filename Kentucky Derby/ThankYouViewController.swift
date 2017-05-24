@@ -11,21 +11,21 @@ import UIKit
 class ThankYouViewController: UIViewController{
     //FILE PATH TO THE STORED 'HORSES NEEDED' VARIABLE
     var neededHorseFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horsesNeeded").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("horsesNeeded").path
     }
     //FILE PATH TO THE STORED MAIN HORSE LIST
     var horseFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horseList").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("horseList").path
     }
     //FILE PATH TO THE 'CASH POT' VARIABLE
     var cashPotFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("cashPot").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("cashPot").path
     }
     
     //Universally used variables
@@ -50,7 +50,7 @@ class ThankYouViewController: UIViewController{
      * Parameters: numberOfHorses: Int
      * Return: Int
      */
-    func determinePrice (numberOfHorses: Int) -> Int {
+    func determinePrice (_ numberOfHorses: Int) -> Int {
         switch numberOfHorses {
         case 1:
             return 10
@@ -69,17 +69,17 @@ class ThankYouViewController: UIViewController{
         super.viewDidLoad()
         
         //INSTANTIATES THE UNIVERSAL VARIABLES
-        if let archivedHorsesNeeded = NSKeyedUnarchiver.unarchiveObjectWithFile(neededHorseFilePath) as? Int {
+        if let archivedHorsesNeeded = NSKeyedUnarchiver.unarchiveObject(withFile: neededHorseFilePath) as? Int {
             horsesNeeded = archivedHorsesNeeded
         }
-        if let archivedCashPot = NSKeyedUnarchiver.unarchiveObjectWithFile(cashPotFilePath) as? Int {
+        if let archivedCashPot = NSKeyedUnarchiver.unarchiveObject(withFile: cashPotFilePath) as? Int {
             cashPot = archivedCashPot
         }
         
         priceLbl.text = "$\(determinePrice(horsesNeeded))"
-        numHorsesLabel.text = "For the \(horsesNeeded) horses, you owe:"
+        numHorsesLabel.text = "For the \(horsesNeeded!) horses, you owe:"
         
-        cashPot = cashPot + determinePrice(horsesNeeded)
+        cashPot = cashPot + determinePrice(horsesNeeded!)
         NSKeyedArchiver.archiveRootObject(cashPot, toFile: cashPotFilePath)
         
     }

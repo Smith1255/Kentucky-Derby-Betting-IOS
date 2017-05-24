@@ -10,29 +10,29 @@ import UIKit
 
 class FirstViewController: UIViewController {
     var userNameFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("userName").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("userName").path
     }
     var allHorseListsFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("allHorseLists").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("allHorseLists").path
     }
     var neededHorseFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("horsesNeeded").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("horsesNeeded").path
     }
     var firstTimeFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("firstTime").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("firstTime").path
     }
     var cashPotFilePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("cashPot").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("cashPot").path
     }
     
     var userName: String!
@@ -45,7 +45,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if let isFirstTime = NSKeyedUnarchiver.unarchiveObjectWithFile(firstTimeFilePath) as? Bool {
+        if let isFirstTime = NSKeyedUnarchiver.unarchiveObject(withFile: firstTimeFilePath) as? Bool {
             self.isFirstTime = isFirstTime
         }
         if (isFirstTime) {
@@ -65,7 +65,7 @@ class FirstViewController: UIViewController {
     }
     
     //FUNC & ACTION OF SCENE 1: WELCOME SCREEN
-    @IBAction func onContinuePressed (sender: UIButton!) {
+    @IBAction func onContinuePressed (_ sender: UIButton!) {
         userName = nameTxt.text!
         
         NSKeyedArchiver.archiveRootObject(userName, toFile: userNameFilePath)
