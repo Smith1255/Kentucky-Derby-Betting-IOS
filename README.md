@@ -5,4 +5,3 @@ Right now, the view is configured soley for the iPad.
 
 Written orginally for the personal use at a party. 
 
-May release on App store later this year.
